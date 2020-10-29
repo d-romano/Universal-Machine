@@ -44,11 +44,11 @@ Contains the intial loop for reading in instructions, extracts the words using b
 Simulates the memory of a machine. 
 
 Made up of a struct that contains:
-	* A sequence of mapped (in-use) segments. Segments are represented as a sequence of words.
-        * A sequence of uint32 ID's that indicates which memory segments arent in use. This is utilized
-	  like a stack  so the most recently freed memory segments are used first.
-	* A counter that keeps track of the total number of segments. Used for ID's and freeing memory.
-	* A program counter that keeps track of the current word of the segment.
+* A sequence of mapped (in-use) segments. Segments are represented as a sequence of words.
+* A sequence of uint32 ID's that indicates which memory segments arent in use. This is utilized
+  like a stack  so the most recently freed memory segments are used first.
+* A counter that keeps track of the total number of segments. Used for ID's and freeing memory.
+* A program counter that keeps track of the current word of the segment.
 
 A new segment is made only when there are no unmapped segments available and the total number of segments
 is then incremented. If there are IDs stored in the unmapped sequence they are then popped out  and the 
