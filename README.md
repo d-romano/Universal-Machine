@@ -30,26 +30,26 @@ The UM can perform the following functions:
 
 ## Components
 ### UM.c:
-        Expects location of instruction file to be passed via cmd then attempts to open to validate existance.
-        This program then passes the file to readDisk.c and passes the results of that call to run.c.
+Expects location of instruction file to be passed via cmd then attempts to open to validate existance.
+This program then passes the file to readDisk.c and passes the results of that call to run.c.
 
 ### readDisk.c:
-        Contains the secrets of reading the program from the disk. Calculates the size of the file in bytes then
-	uses it to calculate the number of words. Finally reads the file in big-endian order packing the bits into words.
+Contains the secrets of reading the program from the disk. Calculates the size of the file in bytes then
+uses it to calculate the number of words. Finally reads the file in big-endian order packing the bits into words.
 
 ### run.c:
-        Contains the intial loop for reading in instructions, extracts the words using bitpack then uses the opcode to call
+Contains the intial loop for reading in instructions, extracts the words using bitpack then uses the opcode to call
 
 ### memory.c:
-	Simulates the memory of a machine. 
+Simulates the memory of a machine. 
 
-	Made up of a struct that contains:
-		* A sequence of mapped (in-use) segments. Segments are represented as a sequence of words.
-                * A sequence of uint32 ID's that indicates which memory segments arent in use. This is utilized
-		  like a stack  so the most recently freed memory segments are used first.
-		* A counter that keeps track of the total number of segments. Used for ID's and freeing memory.
-		* A program counter that keeps track of the current word of the segment.
+Made up of a struct that contains:
+	* A sequence of mapped (in-use) segments. Segments are represented as a sequence of words.
+        * A sequence of uint32 ID's that indicates which memory segments arent in use. This is utilized
+	  like a stack  so the most recently freed memory segments are used first.
+	* A counter that keeps track of the total number of segments. Used for ID's and freeing memory.
+	* A program counter that keeps track of the current word of the segment.
 
-	A new segment is made only when there are no unmapped segments available and the total number of segments
-	is then incremented. If there are IDs stored in the unmapped sequence they are then popped out  and the 
-	old memory segment is then freed and replaced with a new segment.
+A new segment is made only when there are no unmapped segments available and the total number of segments
+is then incremented. If there are IDs stored in the unmapped sequence they are then popped out  and the 
+old memory segment is then freed and replaced with a new segment.
