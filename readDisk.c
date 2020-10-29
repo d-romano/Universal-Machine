@@ -4,12 +4,14 @@
 #include "assert.h"
 
 
-// uses sys/stat.h to get file size.
+// uses sys/stat.h to get file size in bytes.
 unsigned getFileSize(const char* fname);
-/** calculates the number of words in the program
+/**
+ *  Calculates the number of words in the program
  *  32-bits per word, 8 bits per byte = 4 bytes per word.
  **/
 unsigned getNumWords(unsigned fsize);
+
 
 Seq_T initRead(FILE* file, const char *fname){
 	

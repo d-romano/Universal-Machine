@@ -147,6 +147,7 @@ void runUM(Seq_T prog){
 	//Storing array on the stack
 	uint32_t reg[8] = {0};
 
+	// Stores instruction, opcode and 3 registers.
 	uint32_t word;
 	OPCODES opcode;
 	uint32_t rA;

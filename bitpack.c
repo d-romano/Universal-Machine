@@ -17,29 +17,24 @@ static inline int64_t shr(uint64_t word, unsigned bit){
 //Perform arithmetic right shift
 static inline int64_t sha(uint64_t word, unsigned bit){
 	if(bit == 64)
-		bit =63;
+		bit=63;
 	return (int64_t)word >> bit;
 }
 
 
 bool Bitpack_fitsu(uint64_t n, unsigned width){
-
-	/** idea is to shift the word to the left by 64-width then right 64-width bits. 
-	 * If the word fits in the passed width then it will be unchanged, else it will
-	 * be a different number indicating it will not fit.
-	 **/
-	
+	// If width of value > 64 it wont fit.
 	assert(width <= 64);
-
-//	uint64_t testedNum = shr(shl(n, 64-width), 64-width);
-//	return testedNum == n;
-//
+	// Since its unsigned if value shifted to right width should be cleared.
 	return shr(n, width) == 0;
 }
 
 
 bool Bitpack_fitss(int64_t n, unsigned width){
-	// idea remains the same as fitsu, shift left by 64-width and then back right to 64-width.
+	/** idea is to shift the word to the left by 64-width then right 64-width bits. 
+	 * If the word fits in the passed width then it will be unchanged, else it will
+	 * be a different number indicating it will not fit.
+	 **/
 	 
 	assert(width <= 64);
 

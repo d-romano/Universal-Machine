@@ -6,7 +6,6 @@
 mem* initMemory(Seq_T prog){
 
 	mem *newMem = malloc(sizeof(mem));
-
 	newMem->segments = Seq_new(0);
 	newMem->unmapped = Seq_new(0);
 	newMem->totSegs = 0;
